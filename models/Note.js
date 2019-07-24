@@ -18,7 +18,7 @@ const NoteSchema = new Schema({
 });
 
 // create model from Schema
-const Note = mongoose.model('Note',NoteSchema);
+const Note = mongoose.model('Note', NoteSchema);
 
 //export Note module
 module.exports = Note;

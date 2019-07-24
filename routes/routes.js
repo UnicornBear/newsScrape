@@ -72,22 +72,6 @@ app.get('/scrape', (req, res)=>{
     });		
 
 
-//SAVE
-	// report the saved articles
-    app.get('/saved', (req, res)=>{
-        db.Article.find({saved: true})
-        .then((dbArticle)=>{
-            let articleObj = {article: dbArticle};
-
-            // report the retrieved articles
-            res.render('index', articleObj);
-        })
-        .catch((err)=>{
-            res.json(err);
-        });
-    });
-	
-
 //REPORT
     // report articles that have been scraped
     app.get('/articles', (req, res)=>{
@@ -106,8 +90,21 @@ app.get('/scrape', (req, res)=>{
 
 
 
-//SAVE Article
-	// set an article to the saved list
+//SAVE
+	// report the saved articles
+    app.get('/saved', (req, res)=>{
+        db.Article.find({saved: true})
+        .then((dbArticle)=>{
+            let articleObj = {article: dbArticle};
+
+            // report the retrieved articles
+            res.render('index', articleObj);
+        })
+        .catch((err)=>{
+            res.json(err);
+        });
+    });
+	
 
 //DELETE Article
 	//remove a saved article
