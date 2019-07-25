@@ -30,10 +30,14 @@ app.engine('handlebars', expressHandlebars({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
 // database configure utilizing mongoose
-mongoose.Promise = Promise;
-mongoose.connect(MONGODB_URI || 'mongodb://<user>:<password1>@ds235840.mlab.com:35840/heroku_sthcmjmp', 
-    {
-        userMongoClient: true
+mongoose.Promise = global.Promise;
+
+// connect to the Mongo DB
+mongoose.connect(
+    process.env.MONGODB_URI || 
+    'mongodb://user:password1@ds235840.mlab.com:35840/heroku_sthcmjmp',
+    { 
+        useNewUrlParser: true 
     }
 );
 
